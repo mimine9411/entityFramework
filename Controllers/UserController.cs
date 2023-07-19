@@ -7,7 +7,6 @@ using resa2.Models;
 
 namespace resa2.Controllers;
 
-[Authorize]
 public class UserController : Controller
 {
     private readonly AppContext _context;
@@ -17,6 +16,7 @@ public class UserController : Controller
         _context = context;
     }
 
+    [Authorize]
     public IActionResult Index()
     {
         var users = _context.Users.ToList();
@@ -24,6 +24,7 @@ public class UserController : Controller
         return View();
     }
 
+    [Authorize]
     [HttpGet("User/Details/{id}")]
     public IActionResult Details(int? id)
     {
@@ -40,6 +41,7 @@ public class UserController : Controller
         return View();
     }
 
+  
     public IActionResult Create()
     {
         return View();
@@ -58,7 +60,8 @@ public class UserController : Controller
         }
         return View(user);
     }
-
+    
+    [Authorize]
     [HttpGet("User/Edit/{id}")]
     public IActionResult Edit(int? id)
     {
@@ -75,6 +78,7 @@ public class UserController : Controller
         return View(user);
     }
 
+    [Authorize]
     [HttpPost("User/Edit/{id}/save")]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> EditSave(int id, User user)
@@ -93,7 +97,9 @@ public class UserController : Controller
         ViewBag.ValidationErrors = validationErrors;
         return RedirectToAction(nameof(Edit), new {id = id});
     }
-
+    
+    
+    [Authorize]
     [HttpGet("User/Delete/{id}")]
     public async Task<IActionResult> Delete(User user)
     {
@@ -103,7 +109,7 @@ public class UserController : Controller
     }
 
 
-
+    [Authorize]
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
