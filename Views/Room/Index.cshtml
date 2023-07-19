@@ -1,0 +1,41 @@
+﻿@model List<Room>
+
+@{
+    ViewData["Title"] = "Category List";
+}
+
+<h2>Room List - <a asp-action="Create">Create</a></h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Number</th>
+            <th>Type</th>
+            <th>Floor</th>
+            <th>Capacity</th>
+            <th>Price</th>
+            <th>Available</th>
+            <th>Hotel</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var Room in Model)
+        {
+            <tr>
+                <td>@Room.Name</td>
+                <td>@Room.Number</td>
+                <td>@Room.Type</td>
+                <td>@Room.Floor</td>
+                <td>@Room.Capacity</td>
+                <td>@Room.Price</td>
+                <td>@Room.Available</td>
+                <td>@Room.Hotel</td>
+                <td><a asp-action="Edit" asp-route-id="@Room.Id">Edit</a></td>
+                <td><a asp-action="Delete" asp-route-id="@Room.Id">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,31 @@
+@model Category
+
+@{
+    ViewData["Title"] = "Edit Category";
+}
+
+<h2>Edit Category</h2>
+
+@if (ViewBag.ValidationErrors != null && ViewBag.ValidationErrors.Any())
+{
+    <div class="alert alert-danger">
+        <ul>
+            @foreach (var error in ViewBag.ValidationErrors)
+            {
+                <li>@error</li>
+            }
+        </ul>
+    </div>
+}
+
+<form asp-action="EditSave" asp-route-id="@Model.Id">
+    <div class="form-group">
+        <label asp-for="Name" class="control-label">Name</label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <input type="submit" value="Edit" class="btn btn-primary" />
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

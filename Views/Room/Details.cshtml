@@ -1,0 +1,42 @@
+﻿@model Room
+
+@{
+    ViewData["Title"] = "User List";
+}
+
+<h2>Category @Model.Name</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Number</th>
+            <th>Type</th>
+            <th>Floor</th>
+            <th>Capacity</th>
+            <th>Price</th>
+            <th>Available</th>
+            <th>Hotel</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.Name</td>
+            <td>@Model.Number</td>
+            <td>@Model.Type</td>
+            <td>@Model.Floor</td>
+            <td>@Model.Capacity</td>
+            <td>@Model.Price</td>
+            <td>@Model.Available</td>
+            <td>@Model.Hotel</td>
+            <td><a asp-action="Edit" asp-route-id="@Model.Id">Edit</a></td>
+            <td><a asp-action="Delete" asp-route-id="@Model.Id">Delete</a></td>
+        </tr>
+    </tbody>
+</table>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
